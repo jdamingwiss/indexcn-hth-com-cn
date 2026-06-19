@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://jdamingwiss.github.io/indexcn-hth-com-cn/sitemap.xml
