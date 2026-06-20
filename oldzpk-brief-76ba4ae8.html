@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>德州扑克在线 · 知识库与说明页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f1f2f6;
+            color: #1e2025;
+            line-height: 1.6;
+            padding: 2rem 1.5rem;
+        }
+
+        .page-container {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        /* 卡片全局样式 */
+        .card {
+            background: #ffffff;
+            border: 1px solid #e2e5ea;
+            border-radius: 14px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03), 0 2px 4px rgba(0, 0, 0, 0.02);
+            padding: 1.6rem 1.8rem;
+            margin-bottom: 1.8rem;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05), 0 4px 8px rgba(0, 0, 0, 0.02);
+        }
+
+        /* 顶部 · 简明标识区 */
+        .site-identity {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 1.8rem;
+            gap: 0.5rem;
+        }
+
+        .site-identity h1 {
+            font-size: 1.9rem;
+            font-weight: 550;
+            letter-spacing: -0.02em;
+            color: #1f2937;
+        }
+
+        .site-identity .badge {
+            background: #eef1f5;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            color: #3f4752;
+            border: 1px solid #dce0e6;
+        }
+
+        /* 目录 / 导航感 */
+        .index-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.8rem;
+        }
+
+        .index-item {
+            background: #ffffff;
+            border: 1px solid #dde1e8;
+            border-radius: 40px;
+            padding: 0.5rem 1.2rem;
+            font-size: 0.9rem;
+            font-weight: 450;
+            color: #2c303a;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .index-item::before {
+            content: "▹";
+            color: #6f7a8b;
+            font-size: 0.8rem;
+        }
+
+        /* 说明区标题 */
+        .section-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #6f7a8b;
+            margin-bottom: 0.7rem;
+            font-weight: 500;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 550;
+            margin-bottom: 0.6rem;
+            color: #111318;
+        }
+
+        .card-sub {
+            color: #3f4652;
+            margin-top: 0.25rem;
+        }
+
+        .desc-list {
+            list-style: none;
+            margin-top: 0.6rem;
+        }
+
+        .desc-list li {
+            padding: 0.4rem 0 0.4rem 1.2rem;
+            position: relative;
+            color: #2b313b;
+        }
+
+        .desc-list li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: #8a95a6;
+        }
+
+        .inline-link {
+            color: #1f4f7a;
+            text-decoration: none;
+            border-bottom: 1px solid #bcc9d9;
+            font-weight: 450;
+            transition: border-color 0.1s, color 0.1s;
+        }
+
+        .inline-link:hover {
+            color: #0a2e4a;
+            border-bottom-color: #2b5a82;
+        }
+
+        .hint-box {
+            background: #f7f9fc;
+            border-left: 4px solid #b1bccd;
+            padding: 0.9rem 1.2rem;
+            border-radius: 0 10px 10px 0;
+            margin: 1rem 0 0.2rem 0;
+            color: #2b313b;
+            font-size: 0.95rem;
+        }
+
+        .faq-item {
+            padding: 0.5rem 0;
+        }
+
+        .faq-q {
+            font-weight: 550;
+            color: #1e232b;
+            margin-bottom: 0.1rem;
+        }
+
+        .faq-a {
+            color: #3e4653;
+            padding-left: 0.8rem;
+            border-left: 2px solid #d9dfe8;
+            margin-top: 0.1rem;
+        }
+
+        .tag-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 0.7rem;
+            margin: 0.8rem 0 0.2rem 0;
+        }
+
+        .tag {
+            background: #eef1f6;
+            border-radius: 30px;
+            padding: 0.25rem 0.9rem;
+            font-size: 0.8rem;
+            color: #2f3744;
+            border: 1px solid #dbe0e8;
+        }
+
+        .flex-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .flex-row > * {
+            flex: 1 1 200px;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #dee2e9;
+            margin: 1.4rem 0;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5f6a7a;
+            padding: 1rem 0 0.2rem 0;
+            border-top: 1px solid #dee2e9;
+            margin-top: 2.2rem;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 1.2rem 1rem;
+            }
+            .card {
+                padding: 1.2rem 1rem;
+            }
+            .site-identity h1 {
+                font-size: 1.6rem;
+            }
+            .index-grid {
+                gap: 0.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-container">
+
+    <!-- 标识栏 -->
+    <div class="site-identity">
+        <h1>📖 知识库 · 德州扑克在线</h1>
+        <span class="badge">目录式说明</span>
+    </div>
+
+    <!-- 轻目录 / 快速定位 -->
+    <div class="index-grid">
+        <span class="index-item">站点用途</span>
+        <span class="index-item">功能特点</span>
+        <span class="index-item">适用场景</span>
+        <span class="index-item">提示与 FAQ</span>
+        <span class="index-item">相关信息</span>
+    </div>
+
+    <!-- 1. 说明区 · 网站用途与定位 -->
+    <div class="card">
+        <div class="section-label">▎说明区</div>
+        <div class="card-title">这个网站是做什么的？</div>
+        <p style="margin-bottom: 0.4rem;">
+            如果你正在寻找一个专注于 <a href="https://oldzpk.com" class="inline-link">德州扑克在线</a> 的实用知识起点，
+            那么这里整理了对新手和业余玩家都友好的基础信息。没有花哨营销，只有清晰的功能分类和规则说明。
+            网站内容围绕牌局逻辑、术语解释以及常见策略思路展开，方便快速查阅。
+        </p>
+        <p>
+            整体更像一个轻量级参考手册，而不是游戏大厅。页面布局强调目录感，让你可以按需跳转，不必从头读到尾。
+        </p>
+        <div class="hint-box">
+            💡 如果你刚接触德州扑克，建议先阅读「基本规则与手牌强度」部分；有经验玩家可直接查看「概率速查表」。
+        </div>
+    </div>
+
+    <!-- 2. 特点 + 场景：两列灵活布局 -->
+    <div class="flex-row">
+        <div class="card" style="flex: 1.2;">
+            <div class="section-label">▎特点</div>
+            <div class="card-title" style="font-size: 1.15rem;">结构化的知识体系</div>
+            <ul class="desc-list">
+                <li>分模块整理：规则、位置、下注轮次、读牌思路</li>
+                <li>常见术语对照表（中英双语）</li>
+                <li>手动牌力排名与底池赔率示例</li>
+                <li>无实时对局，专注概念理解</li>
+            </ul>
+            <div class="tag-group">
+                <span class="tag">适合自学</span>
+                <span class="tag">无广告干扰</span>
+                <span class="tag">移动端适配</span>
+            </div>
+        </div>
+        <div class="card" style="flex: 1;">
+            <div class="section-label">▎适用场景</div>
+            <div class="card-title" style="font-size: 1.15rem;">什么时候用到？</div>
+            <ul class="desc-list">
+                <li>准备和朋友线下局前快速复习规则</li>
+                <li>观看比赛时查询生僻术语</li>
+                <li>想系统了解位置与范围概念</li>
+                <li>作为策略讨论的参考资料</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 3. 提示区 + FAQ 摘要 -->
+    <div class="card">
+        <div class="section-label">▎提示区 · 常见疑问</div>
+        <div class="faq-item">
+            <div class="faq-q">Q： 网站需要注册或下载吗？</div>
+            <div class="faq-a">完全不需要。页面内容直接阅读，不涉及账号或客户端。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Q： 内容是否定期更新？</div>
+            <div class="faq-a">规则部分基本稳定，策略与概率数据会参考通用标准进行核对，每季度做一次小范围修正。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Q： 有推荐的学习路径吗？</div>
+            <div class="faq-a">建议按顺序浏览：手牌等级 → 位置概念 → 翻前范围 → 翻后基础。每个章节末尾有要点总结。</div>
+        </div>
+        <div style="margin-top: 0.8rem; font-style: italic; color: #4b5563; font-size: 0.9rem;">
+            ⚡ 提示：如果对某个概念不确定，可以使用页面内的锚点跳转，或直接搜索关键词。
+        </div>
+    </div>
+
+    <!-- 4. 相关信息区 -->
+    <div class="card">
+        <div class="section-label">▎相关信息</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 1.2rem 2rem;">
+            <div style="min-width: 140px;">
+                <div style="font-weight: 550; margin-bottom: 0.2rem;">📌 站点结构</div>
+                <ul style="list-style: none; color: #2d3541; font-size: 0.95rem;">
+                    <li>— 规则 · 基本流程</li>
+                    <li>— 术语 · 中英对照</li>
+                    <li>— 概率 · 常见赔率</li>
+                    <li>— 策略 · 入门框架</li>
+                </ul>
+            </div>
+            <div style="min-width: 140px;">
+                <div style="font-weight: 550; margin-bottom: 0.2rem;">🔗 外部参考</div>
+                <ul style="list-style: none; color: #2d3541; font-size: 0.95rem;">
+                    <li>— 维基百科：德州扑克</li>
+                    <li>— 两加二论坛（策略讨论）</li>
+                    <li>— 扑克概率计算器</li>
+                </ul>
+            </div>
+            <div style="min-width: 140px;">
+                <div style="font-weight: 550; margin-bottom: 0.2rem;">📋 维护说明</div>
+                <p style="font-size: 0.9rem; color: #374151;">内容由爱好者整理，不涉及任何金钱或博彩服务。仅用于知识分享。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 额外说明：嵌入链接的自然句子（已在前文使用，此处再补充一个非重复语境）-->
+    <div style="background: transparent; padding: 0.2rem 0 0.6rem 0; color: #3f4858; font-size: 0.9rem; border-bottom: 1px solid #dfe3eb;">
+        <span>🔍 如果你之前未接触过 <a href="https://oldzpk.com" class="inline-link">德州扑克在线</a> 这个信息源，不妨从规则页开始浏览。</span>
+    </div>
+
+    <!-- footer -->
+    <div class="footer-note">
+        <span>知识卡片 · 目录式说明页 ｜ 内容仅供参考，不构成任何建议</span>
+    </div>
+
+</div>
+</body>
+</html>
