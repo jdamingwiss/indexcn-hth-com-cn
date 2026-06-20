@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>雷速 · 信息检索与对照工具</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f1f3f5;
+      color: #1e293b;
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+
+    .page-wrapper {
+      max-width: 1024px;
+      margin: 0 auto;
+    }
+
+    .hero {
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      border: 1px solid #e2e8f0;
+      padding: 2.5rem 2rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: #0f172a;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero .sub {
+      font-size: 1rem;
+      color: #475569;
+      max-width: 600px;
+      margin: 0 auto 1rem auto;
+    }
+
+    .hero .tagline {
+      display: inline-block;
+      background: #eef2f6;
+      padding: 0.3rem 1rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      color: #334155;
+      border: 1px solid #dce2ea;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 1.6rem 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+      border: 1px solid #dde3ec;
+      transition: box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 6px 14px rgba(0,0,0,0.04);
+    }
+
+    .card h2 {
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin-bottom: 0.9rem;
+      color: #0f172a;
+      border-left: 4px solid #94a3b8;
+      padding-left: 0.75rem;
+    }
+
+    .card p, .card li {
+      font-size: 0.95rem;
+      color: #334155;
+    }
+
+    .card ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .card ul li {
+      padding: 0.3rem 0 0.3rem 1.2rem;
+      position: relative;
+    }
+
+    .card ul li::before {
+      content: "·";
+      position: absolute;
+      left: 0;
+      color: #64748b;
+      font-weight: bold;
+    }
+
+    .full-card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 1.5rem 1.8rem;
+      border: 1px solid #dde3ec;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+      margin-bottom: 1.5rem;
+    }
+
+    .full-card h2 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 0.8rem;
+      color: #0f172a;
+    }
+
+    .full-card p {
+      font-size: 0.95rem;
+      color: #334155;
+      margin-bottom: 0.6rem;
+    }
+
+    .faq-item {
+      margin-bottom: 0.8rem;
+    }
+
+    .faq-item strong {
+      display: block;
+      font-weight: 500;
+      color: #1e293b;
+      margin-bottom: 0.2rem;
+    }
+
+    .faq-item p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #475569;
+    }
+
+    .note-box {
+      background: #f8fafc;
+      border: 1px dashed #cbd5e1;
+      border-radius: 14px;
+      padding: 1rem 1.3rem;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #334155;
+    }
+
+    .link-sentence {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 18px;
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 1.8rem;
+      text-align: center;
+      font-size: 0.98rem;
+      color: #1e293b;
+    }
+
+    .link-sentence a {
+      color: #1e3a5f;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid #b0c4d8;
+    }
+
+    .link-sentence a:hover {
+      color: #0b2a4a;
+      border-bottom-color: #1e3a5f;
+    }
+
+    .footer-note {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #6b7a8f;
+      border-top: 1px solid #dce2ea;
+      padding-top: 1.5rem;
+      margin-top: 0.8rem;
+    }
+
+    .footer-note a {
+      color: #475569;
+      text-decoration: none;
+      border-bottom: 1px dotted #b4c0ce;
+    }
+
+    @media (max-width: 680px) {
+      .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .hero {
+        padding: 1.8rem 1rem;
+      }
+
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+
+      .card, .full-card, .link-sentence {
+        padding: 1.2rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <div class="hero">
+    <h1>日常查询 · 对照 · 延伸</h1>
+    <p class="sub">面向信息整理与快速检索场景，一个轻量化的内容对照工具——<a href="https://m-portal-leisu.com" style="color:#1e3a5f; text-decoration:underline; text-underline-offset:3px;">雷速</a>。</p>
+    <span class="tagline">基于网页端的信息参照与横向阅读</span>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h2>摘要</h2>
+      <p>许多日常查阅场景需要同时比对多个来源或条目：规格、时间线、概念定义、版本差异……<strong>雷速</strong> 提供一个无干扰的对照空间，将原本散落在不同标签页或文档里的内容聚合到同一界面，方便横向对照和要点提取。</p>
+      <p style="margin-top:0.6rem;">它不替代数据库，也不提供自动分析，而是作为阅读时的辅助整理层存在——适合需要频繁比对信息的读者、研究者或资料整理者。</p>
+    </div>
+    <div class="card">
+      <h2>几个亮点</h2>
+      <ul>
+        <li>轻量卡片式布局，减少页面跳转与窗口切换</li>
+        <li>支持多组内容并列展示，便于逐项对照</li>
+        <li>界面简洁，聚焦于文字与数据本身</li>
+        <li>无需安装，浏览器内直接使用</li>
+        <li>适合文献阅读、参数对比、条目摘录等场景</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="full-card">
+    <h2>使用建议</h2>
+    <p>建议在以下情形尝试使用 <a href="https://m-portal-leisu.com" style="color:#1e3a5f; text-decoration:underline; text-underline-offset:2px;">雷速</a>：</p>
+    <ul style="list-style:none; padding-left:0; margin-top:0.3rem;">
+      <li style="padding:0.2rem 0 0.2rem 1.2rem; position:relative;">· 同时打开多个类似页面需要来回对比时，可将关键内容摘入对照区</li>
+      <li style="padding:0.2rem 0 0.2rem 1.2rem; position:relative;">· 阅读技术文档或产品规格时，将不同版本或型号的参数并排放置</li>
+      <li style="padding:0.2rem 0 0.2rem 1.2rem; position:relative;">· 整理学习笔记或概念辨析时，作为临时的横向参考板</li>
+      <li style="padding:0.2rem 0 0.2rem 1.2rem; position:relative;">· 日常信息搜集后，快速汇总关键字段，形成对照视图</li>
+    </ul>
+    <p style="margin-top:0.6rem;">工具本身不保存用户数据，每次使用可自行组织内容结构。</p>
+  </div>
+
+  <div class="full-card" style="margin-bottom:1.2rem;">
+    <h2>FAQ 摘要</h2>
+    <div class="faq-item">
+      <strong>需要注册或登录吗？</strong>
+      <p>不需要。直接通过浏览器访问 <a href="https://m-portal-leisu.com" style="color:#1e3a5f; text-decoration:underline; text-underline-offset:2px;">雷速</a> 即可使用，无账户体系。</p>
+    </div>
+    <div class="faq-item">
+      <strong>数据会保存在哪里？</strong>
+      <p>所有内容仅存在于当前浏览会话中，关闭页面即清除。如需长期保存，建议自行复制到本地文档。</p>
+    </div>
+    <div class="faq-item">
+      <strong>适合移动端使用吗？</strong>
+      <p>页面针对桌面与平板横向空间优化，移动端竖屏亦可使用，但对照体验受屏幕宽度影响。</p>
+    </div>
+    <div class="note-box">
+      ⚡ 提示：本工具适合作为辅助阅读界面，不提供数据备份、同步或分析功能。请根据实际需要合理使用。
+    </div>
+  </div>
+
+  <div class="link-sentence">
+    如果您需要快速聚合信息并进行横向参照，可以尝试 <a href="https://m-portal-leisu.com">雷速</a> ——一个专注于内容对照与阅读延伸的页面工具。
+  </div>
+
+  <div class="footer-note">
+    <p>页面仅作功能说明用途 · 内容基于知识型表述 · <a href="https://m-portal-leisu.com">雷速</a></p>
+  </div>
+
+</div>
+</body>
+</html>
