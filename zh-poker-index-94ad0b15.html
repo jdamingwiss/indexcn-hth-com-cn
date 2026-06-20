@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>德州扑克在线玩 · 策略与乐趣</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #fbe9e0 0%, #f5d6c6 50%, #edc4b3 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+            line-height: 1.6;
+            color: #2c2a28;
+        }
+
+        .card {
+            max-width: 820px;
+            width: 100%;
+            background: #fffcf8;
+            border-radius: 36px 36px 32px 32px;
+            padding: 2.5rem 2.2rem 2.8rem;
+            box-shadow: 0 20px 40px -12px rgba(120, 70, 50, 0.25), 0 8px 16px -4px rgba(0,0,0,0.08);
+            transition: box-shadow 0.2s;
+        }
+
+        .hero {
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #7e4f3a, #b37b63);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .sub {
+            font-size: 1.1rem;
+            color: #6f5a4e;
+            border-left: 4px solid #dbb09b;
+            padding-left: 1rem;
+            margin-top: 0.2rem;
+        }
+
+        .intro p {
+            font-size: 1rem;
+            margin-bottom: 1.6rem;
+        }
+
+        .highlights {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem 1.5rem;
+            margin: 2rem 0 1.8rem;
+        }
+
+        .highlight-item {
+            flex: 1 1 200px;
+            background: #f7eee8;
+            padding: 1.1rem 1.2rem;
+            border-radius: 24px;
+            box-shadow: 0 2px 6px rgba(160, 110, 80, 0.06);
+            transition: transform 0.15s, background 0.2s;
+        }
+
+        .highlight-item:hover {
+            background: #f2e4db;
+            transform: translateY(-2px);
+        }
+
+        .highlight-item .icon {
+            font-size: 1.6rem;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .highlight-item h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #6b4a39;
+            margin-bottom: 0.3rem;
+        }
+
+        .highlight-item p {
+            font-size: 0.9rem;
+            color: #4f3d32;
+        }
+
+        .scene-box {
+            background: #faf3ed;
+            border-radius: 28px;
+            padding: 1.4rem 1.6rem;
+            margin: 1.8rem 0 1.4rem;
+            border: 1px solid #e5d3c7;
+        }
+
+        .scene-box h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #7a5744;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .scene-box ul {
+            list-style: none;
+            padding-left: 0.2rem;
+        }
+
+        .scene-box li {
+            padding: 0.35rem 0 0.35rem 1.6rem;
+            position: relative;
+            font-size: 0.95rem;
+            color: #3f332c;
+        }
+
+        .scene-box li::before {
+            content: "▹";
+            position: absolute;
+            left: 0.1rem;
+            color: #b4846b;
+            font-size: 1.2rem;
+        }
+
+        .tip-note {
+            background: #fff5ed;
+            border-radius: 20px;
+            padding: 1rem 1.5rem;
+            margin: 1.8rem 0 1.2rem;
+            border-left: 6px solid #cb9e87;
+        }
+
+        .tip-note p {
+            font-size: 0.95rem;
+            color: #4b3a30;
+        }
+
+        .faq-summary {
+            margin-top: 2rem;
+            border-top: 1px solid #e6d5c9;
+            padding-top: 1.5rem;
+        }
+
+        .faq-summary details {
+            margin-bottom: 0.6rem;
+            border-radius: 16px;
+            background: #f8efe8;
+            padding: 0.3rem 1rem;
+            transition: background 0.15s;
+        }
+
+        .faq-summary details[open] {
+            background: #f2e2d6;
+        }
+
+        .faq-summary summary {
+            font-weight: 500;
+            cursor: pointer;
+            padding: 0.6rem 0;
+            color: #5f4538;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .faq-summary summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-summary summary::before {
+            content: "﹖";
+            font-size: 1.2rem;
+            color: #b37b63;
+            margin-right: 0.2rem;
+        }
+
+        .faq-summary p {
+            font-size: 0.9rem;
+            padding: 0.2rem 0 0.8rem 1.6rem;
+            color: #3d2f27;
+        }
+
+        .link-sentence {
+            font-size: 1.05rem;
+            margin: 1.4rem 0 0.2rem;
+            padding: 0.8rem 1rem;
+            background: #f4e7de;
+            border-radius: 40px;
+            display: inline-block;
+            background: #f4e7de;
+        }
+
+        .link-sentence a {
+            color: #7a4b34;
+            font-weight: 600;
+            text-decoration: none;
+            background: #f5e3d8;
+            padding: 0.1rem 0.7rem;
+            border-radius: 40px;
+            transition: background 0.2s, color 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .link-sentence a:hover {
+            background: #dbb09b;
+            color: #2e211a;
+            border-color: #c3927a;
+        }
+
+        .footer-note {
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: #7b6a5f;
+            text-align: center;
+            border-top: 1px dashed #dccbc1;
+            padding-top: 1.2rem;
+            letter-spacing: 0.01em;
+        }
+
+        @media (max-width: 600px) {
+            .card {
+                padding: 1.8rem 1.2rem 2rem;
+                border-radius: 28px;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .highlights {
+                flex-direction: column;
+            }
+            .highlight-item {
+                flex: 1 1 auto;
+            }
+            .link-sentence {
+                font-size: 0.95rem;
+                padding: 0.5rem 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="hero">
+            <h1>德州扑克在线玩 · 思考的棋局</h1>
+            <div class="sub">牌面之下，是概率、观察与耐心的对话</div>
+        </div>
+
+        <div class="intro">
+            <p>德州扑克不只是一种竞技，更像一场温和的心理博弈——读牌、控池、抉择。对许多爱好者来说，把这项活动搬到线上，反而多了一份从容：不必风尘仆仆赶往牌室，也不用担心节奏被他人打乱。一个合适的平台，能让玩家专注于策略本身，享受智力对弈的乐趣。</p>
+        </div>
+
+        <div class="highlights">
+            <div class="highlight-item">
+                <span class="icon">🧠</span>
+                <h3>决策场景</h3>
+                <p>翻牌、转牌、河牌——每一条街都藏着信息，调整下注尺度与范围是核心乐趣。</p>
+            </div>
+            <div class="highlight-item">
+                <span class="icon">📊</span>
+                <h3>简明数据</h3>
+                <p>手牌胜率、底池赔率、位置优势……这些概念在线下需要心算，线上则更直观。</p>
+            </div>
+            <div class="highlight-item">
+                <span class="icon">🕊️</span>
+                <h3>节奏自控</h3>
+                <p>随时暂停、回看牌谱、调整情绪——线上环境给了玩家更从容的成长空间。</p>
+            </div>
+        </div>
+
+        <div class="scene-box">
+            <h2>适合怎样的你</h2>
+            <ul>
+                <li>想系统练习翻前范围与翻后打法，又不想被线下社交压力干扰。</li>
+                <li>利用碎片时间打几手牌——不用等人齐，不用洗牌，随时入场。</li>
+                <li>对德扑已有基础认知，希望在低压力环境中验证自己的策略模型。</li>
+                <li>只是想和朋友线上切磋，远离现金局的心理负担。</li>
+            </ul>
+        </div>
+
+        <div class="tip-note">
+            <p><strong>一点提醒：</strong> 线上玩牌和线下体验略有不同——少了物理读牌，多了数据辅助。试着把注意力放在“为什么这么打”上，而不是只盯着是否赢下底池。慢慢来，策略比运气更经得起时间检验。</p>
+        </div>
+
+        <div class="faq-summary">
+            <details>
+                <summary>线上德州扑克和线下差别大吗？</summary>
+                <p>核心规则一致，但线上节奏更快，且无法观察对手微表情。不过，你可以通过下注模式、时间差、位置数据来建立另一套阅读方式。</p>
+            </details>
+            <details>
+                <summary>新手适合直接开始在线玩吗？</summary>
+                <p>如果先了解基本牌型、下注轮次和底池赔率，线上环境其实比线下更友好——没有旁观者的压力，可以慢慢思考。</p>
+            </details>
+            <details>
+                <summary>怎样选择对局类型？</summary>
+                <p>建议从低级别或练习桌开始，重点观察自己是否频繁犯同样的错误。线上的一大优势是能记录牌局，方便复盘。</p>
+            </details>
+        </div>
+
+        <div class="link-sentence">
+            <span>如果你对策略型牌戏感兴趣，可以了解 </span>
+            <a href="https://zh-poker.com">德州扑克在线玩</a>
+            <span> 这种形式——它提供了一种低门槛的练习与对战环境。</span>
+        </div>
+
+        <div class="footer-note">
+            保持冷静，尊重对手，享受思考的过程。
+        </div>
+    </div>
+</body>
+</html>
